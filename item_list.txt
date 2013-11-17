@@ -1,0 +1,76 @@
+Wood Barricade	1
+Camp Fire	1
+Sleeping Bag	5
+Wood Storage Box	1
+Wooden Door	1
+Wood Shelter	1
+Low Grade Fuel	10
+Workbench	1
+Stone Hatchet	1
+Furnace	1
+Torch	1
+Low Quality Metal	250
+Metal Door	2
+Large Wood Storage	1
+Small Stash	1
+Gunpowder	250
+Wood Planks	50
+Paper	25
+Explosives	50
+Bandage	5
+Large Medkit	5
+Small Medkit	5
+9mm Ammo	250
+Arrow	40
+Handmade Shell	250
+Shotgun Shells	250
+556 Ammo	250
+9mm Pistol	1
+Hatchet	1
+Hunting Bow	1
+HandCannon	1
+Pipe Shotgun	1
+P250	1
+Shotgun	1
+Pick Axe	1
+Explosive Charge	2
+F1 Grenade	5
+M4	1
+MP5A4	1
+Cloth Helmet	1
+Cloth Vest	1
+Cloth Pants	1
+Cloth Boots	1
+Leather Helmet	1
+Leather Vest	1
+Leather Pants	1
+Leather Boots	1
+Rad Suit Helmet	1
+Rad Suit Vest	1
+Rad Suit Pants	1
+Rad Suit Boots	1
+Kevlar Helmet	1
+Kevlar Vest	1
+Kevlar Pants	1
+Kevlar Boots	1
+Flare	1
+Holo sight	1
+Silencer	1
+Flashlight Mod	1
+Laser Sight	1
+Wood Pillar	1
+Wood Foundation	1
+Wood Wall	1
+Wood Doorway	1
+Wood Window	1
+Wood Stairs	1
+Wood Ramp	1
+Wood Ceiling	1
+Metal Pillar	1
+Metal Foundation	1
+Metal Wall	1
+Metal Doorway	1
+Metal Window	1
+Metal Stairs	1
+Metal Ramp	1
+Metal Ceiling	1

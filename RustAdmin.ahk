@@ -6,9 +6,9 @@ CoordMode,Mouse,Screen
 
 MsgBox,0,Rust Admin Instructions,1) You need to play in windowed mode`n2) You need to manually login to admin mode`n3) Close the console window`n4) Press F2 to open admin window`n`n -Press F3 at any time to quit-,100
 
-AHKFiles = F:\AHK\
+AHKFiles = %A_WorkingDir%
 
-TeleportPlayer = [ABSO] BuckeyeMonkey
+TeleportPlayer = 
 TeleportX := 6275.024
 TeleportY := 455.483
 TeleportZ := -3855
