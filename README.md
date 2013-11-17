@@ -25,9 +25,13 @@ Additional Instructions:
 *Edit the lines in RustAdmin.ahk to set defaults for teleportation:
 
 TeleportPlayer = [ABSO] BuckeyeMonkey
+
 TeleportX := 6275.024
+
 TeleportY := 455.483
+
 TeleportZ := -3855
+
 
 
 
