@@ -8,7 +8,7 @@ MsgBox,0,Rust Admin Instructions,1) You need to play in windowed mode`n2) You ne
 
 AHKFiles = %A_WorkingDir%
 
-TeleportPlayer = 
+TeleportPlayer = [ABSO] BuckeyeMonkey
 TeleportX := 6275.024
 TeleportY := 455.483
 TeleportZ := -3855
@@ -18,6 +18,8 @@ YCenter := A_ScreenHeight/2
 
 Delay = 5000
 Stop = Yes
+
+#IfWinActive,PlayRust
 
 F2::
 
