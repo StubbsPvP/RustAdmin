@@ -18,11 +18,13 @@ Rust Server Administration Script
 
 Additional Instructions:
 
-*Read the Example_notice file for instructions on setting up Standard Notices
+#Your *_notice.txt files and item_list.txt file need to be in the same directory as RustAdmin.ahk
 
-*Edit the item_list.txt file to change default values for the number of each item to give
+#Read the Example_notice file for instructions on setting up Standard Notices
 
-*Edit the lines in RustAdmin.ahk to set defaults for teleportation:
+#Edit the item_list.txt file to change default values for the number of each item to give
+
+#Edit the lines in RustAdmin.ahk to set defaults for teleportation:
 
 TeleportPlayer = [ABSO] BuckeyeMonkey
 
