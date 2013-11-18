@@ -3,6 +3,9 @@ RustAdmin
 
 Rust Server Administration Script
 
+Instructions:
+=========
+
 1) Download AutoHotKey here: http://autohotkey.com
 
 2) You need to run Rust in windowed mode for the RustAdmin Gui window to be visible
@@ -17,14 +20,14 @@ Rust Server Administration Script
 
 
 Additional Instructions:
+=========
+-Your *_notice.txt files and item_list.txt file need to be in the same directory as RustAdmin.ahk
 
-#Your *_notice.txt files and item_list.txt file need to be in the same directory as RustAdmin.ahk
+-Read the Example_notice file for instructions on setting up Standard Notices
 
-#Read the Example_notice file for instructions on setting up Standard Notices
+-Edit the item_list.txt file to change default values for the number of each item to give
 
-#Edit the item_list.txt file to change default values for the number of each item to give
-
-#Edit the lines in RustAdmin.ahk to set defaults for teleportation:
+-Edit the lines in RustAdmin.ahk to set defaults for teleportation:
 
 TeleportPlayer = [ABSO] BuckeyeMonkey
 
