@@ -74,3 +74,4 @@ Metal Window	1
 Metal Stairs	1
 Metal Ramp	1
 Metal Ceiling	1
+Research Kit 1	1
