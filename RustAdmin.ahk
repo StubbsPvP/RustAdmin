@@ -117,12 +117,12 @@ ShowSendStandardNotice() {
 	Gui,4:Submit
 	Gui,4:Destroy
 	StandardNotice = StandardNoticeChoice
-	Loop,%AHKFiles%*_notice.txt
+	Loop,%AHKFiles%\*_notice.txt
 	{
 		if (A_Index = StandardNoticeChoice) {
 			Send {F1}
 			Sleep 100
-			Loop, read, %AHKFiles%%A_LoopFileName%
+			Loop, read, %AHKFiles%\%A_LoopFileName%
 			{
 				;ToolTip,%A_LoopReadLine%
 				Send say %A_LoopReadLine%
@@ -215,7 +215,8 @@ ShowCreateItems() {
 	
 	Gui,5:Submit
 	Gui,5:Destroy
-	Loop, read, %AHKFiles%item_list.txt
+	
+	Loop, read, %AHKFiles%\item_list.txt
 	{
 		StringSplit, param_array, A_LoopReadLine, %A_Tab% 
 		if (Items%A_Index%_1 = 1) {
@@ -224,6 +225,7 @@ ShowCreateItems() {
 			ExecuteCommand(GiveCommand)
 		}
 	}
+
 return
 
 5GuiClose:
