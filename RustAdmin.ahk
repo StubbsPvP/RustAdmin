@@ -161,7 +161,50 @@ ShowCreateItems() {
 	global Items81_2,Items82_2,Items83_2,Items84_2,Items85_2,Items86_2,Items87_2,Items88_2,Items89_2,Items90_2
 	global Items91_1,Items92_1,Items93_1,Items94_1,Items95_1,Items96_1,Items97_1,Items98_1,Items99_1,Items100_1
 	global Items91_2,Items92_2,Items93_2,Items94_2,Items95_2,Items96_2,Items97_2,Items98_2,Items99_2,Items100_2
-	
+	global Items101_1,Items102_1,Items103_1,Items104_1,Items105_1,Items106_1,Items107_1,Items108_1,Items109_1,Items110_1
+	global Items101_2,Items102_2,Items103_2,Items104_2,Items105_2,Items106_2,Items107_2,Items108_2,Items109_2,Items110_2
+	global Items111_1,Items112_1,Items113_1,Items114_1,Items115_1,Items116_1,Items117_1,Items118_1,Items119_1,Items120_1
+	global Items111_2,Items112_2,Items113_2,Items114_2,Items115_2,Items116_2,Items117_2,Items118_2,Items119_2,Items120_2
+	global Items121_1,Items122_1,Items123_1,Items124_1,Items125_1,Items126_1,Items127_1,Items128_1,Items129_1,Items130_1
+	global Items121_2,Items122_2,Items123_2,Items124_2,Items125_2,Items126_2,Items127_2,Items128_2,Items129_2,Items130_2
+	global Items131_1,Items132_1,Items133_1,Items134_1,Items135_1,Items136_1,Items137_1,Items138_1,Items139_1,Items140_1
+	global Items131_2,Items132_2,Items133_2,Items134_2,Items135_2,Items136_2,Items137_2,Items138_2,Items139_2,Items140_2
+	global Items141_1,Items142_1,Items143_1,Items144_1,Items145_1,Items146_1,Items147_1,Items148_1,Items149_1,Items150_1
+	global Items141_2,Items142_2,Items143_2,Items144_2,Items145_2,Items146_2,Items147_2,Items148_2,Items149_2,Items150_2
+	global Items151_1,Items152_1,Items153_1,Items154_1,Items155_1,Items156_1,Items157_1,Items158_1,Items159_1,Items160_1
+	global Items151_2,Items152_2,Items153_2,Items154_2,Items155_2,Items156_2,Items157_2,Items158_2,Items159_2,Items160_2
+	global Items161_1,Items162_1,Items163_1,Items164_1,Items165_1,Items166_1,Items167_1,Items168_1,Items169_1,Items170_1
+	global Items161_2,Items162_2,Items163_2,Items164_2,Items165_2,Items166_2,Items167_2,Items168_2,Items169_2,Items170_2
+	global Items171_1,Items172_1,Items173_1,Items174_1,Items175_1,Items176_1,Items177_1,Items178_1,Items179_1,Items180_1
+	global Items171_2,Items172_2,Items173_2,Items174_2,Items175_2,Items176_2,Items177_2,Items178_2,Items179_2,Items180_2
+	global Items181_1,Items182_1,Items183_1,Items184_1,Items185_1,Items186_1,Items187_1,Items188_1,Items189_1,Items190_1
+	global Items181_2,Items182_2,Items183_2,Items184_2,Items185_2,Items186_2,Items187_2,Items188_2,Items189_2,Items190_2
+	global Items191_1,Items192_1,Items193_1,Items194_1,Items195_1,Items196_1,Items197_1,Items198_1,Items199_1,Items200_1
+	global Items191_2,Items192_2,Items193_2,Items194_2,Items195_2,Items196_2,Items197_2,Items198_2,Items199_2,Items200_2
+	global Items201_1,Items202_1,Items203_1,Items204_1,Items205_1,Items206_1,Items207_1,Items208_1,Items209_1,Items210_1
+	global Items201_2,Items202_2,Items203_2,Items204_2,Items205_2,Items206_2,Items207_2,Items208_2,Items209_2,Items210_2
+	global Items211_1,Items212_1,Items213_1,Items214_1,Items215_1,Items216_1,Items217_1,Items218_1,Items219_1,Items220_1
+	global Items211_2,Items212_2,Items213_2,Items214_2,Items215_2,Items216_2,Items217_2,Items218_2,Items219_2,Items220_2
+	global Items221_1,Items222_1,Items223_1,Items224_1,Items225_1,Items226_1,Items227_1,Items228_1,Items229_1,Items230_1
+	global Items221_2,Items222_2,Items223_2,Items224_2,Items225_2,Items226_2,Items227_2,Items228_2,Items229_2,Items230_2
+	global Items231_1,Items232_1,Items233_1,Items234_1,Items235_1,Items236_1,Items237_1,Items238_1,Items239_1,Items240_1
+	global Items231_2,Items232_2,Items233_2,Items234_2,Items235_2,Items236_2,Items237_2,Items238_2,Items239_2,Items240_2
+	global Items241_1,Items242_1,Items243_1,Items244_1,Items245_1,Items246_1,Items247_1,Items248_1,Items249_1,Items250_1
+	global Items241_2,Items242_2,Items243_2,Items244_2,Items245_2,Items246_2,Items247_2,Items248_2,Items249_2,Items250_2
+	global Items251_1,Items252_1,Items253_1,Items254_1,Items255_1,Items256_1,Items257_1,Items258_1,Items259_1,Items260_1
+	global Items251_2,Items252_2,Items253_2,Items254_2,Items255_2,Items256_2,Items257_2,Items258_2,Items259_2,Items260_2
+	global Items261_1,Items262_1,Items263_1,Items264_1,Items265_1,Items266_1,Items267_1,Items268_1,Items269_1,Items270_1
+	global Items261_2,Items262_2,Items263_2,Items264_2,Items265_2,Items266_2,Items267_2,Items268_2,Items269_2,Items270_2
+	global Items271_1,Items272_1,Items273_1,Items274_1,Items275_1,Items276_1,Items277_1,Items278_1,Items279_1,Items280_1
+	global Items271_2,Items272_2,Items273_2,Items274_2,Items275_2,Items276_2,Items277_2,Items278_2,Items279_2,Items280_2
+	global Items281_1,Items282_1,Items283_1,Items284_1,Items285_1,Items286_1,Items287_1,Items288_1,Items289_1,Items290_1
+	global Items281_2,Items282_2,Items283_2,Items284_2,Items285_2,Items286_2,Items287_2,Items288_2,Items289_2,Items290_2
+	global Items291_1,Items292_1,Items293_1,Items294_1,Items295_1,Items296_1,Items297_1,Items298_1,Items299_1,Items300_1
+	global Items291_2,Items292_2,Items293_2,Items294_2,Items295_2,Items296_2,Items297_2,Items298_2,Items299_2,Items300_2
+
+
+
+
 	global ItemPlayer
 	
 	Gui,5: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
@@ -211,6 +254,46 @@ ShowCreateItems() {
 	global Items81_2,Items82_2,Items83_2,Items84_2,Items85_2,Items86_2,Items87_2,Items88_2,Items89_2,Items90_2
 	global Items91_1,Items92_1,Items93_1,Items94_1,Items95_1,Items96_1,Items97_1,Items98_1,Items99_1,Items100_1
 	global Items91_2,Items92_2,Items93_2,Items94_2,Items95_2,Items96_2,Items97_2,Items98_2,Items99_2,Items100_2
+	global Items101_1,Items102_1,Items103_1,Items104_1,Items105_1,Items106_1,Items107_1,Items108_1,Items109_1,Items110_1
+	global Items101_2,Items102_2,Items103_2,Items104_2,Items105_2,Items106_2,Items107_2,Items108_2,Items109_2,Items110_2
+	global Items111_1,Items112_1,Items113_1,Items114_1,Items115_1,Items116_1,Items117_1,Items118_1,Items119_1,Items120_1
+	global Items111_2,Items112_2,Items113_2,Items114_2,Items115_2,Items116_2,Items117_2,Items118_2,Items119_2,Items120_2
+	global Items121_1,Items122_1,Items123_1,Items124_1,Items125_1,Items126_1,Items127_1,Items128_1,Items129_1,Items130_1
+	global Items121_2,Items122_2,Items123_2,Items124_2,Items125_2,Items126_2,Items127_2,Items128_2,Items129_2,Items130_2
+	global Items131_1,Items132_1,Items133_1,Items134_1,Items135_1,Items136_1,Items137_1,Items138_1,Items139_1,Items140_1
+	global Items131_2,Items132_2,Items133_2,Items134_2,Items135_2,Items136_2,Items137_2,Items138_2,Items139_2,Items140_2
+	global Items141_1,Items142_1,Items143_1,Items144_1,Items145_1,Items146_1,Items147_1,Items148_1,Items149_1,Items150_1
+	global Items141_2,Items142_2,Items143_2,Items144_2,Items145_2,Items146_2,Items147_2,Items148_2,Items149_2,Items150_2
+	global Items151_1,Items152_1,Items153_1,Items154_1,Items155_1,Items156_1,Items157_1,Items158_1,Items159_1,Items160_1
+	global Items151_2,Items152_2,Items153_2,Items154_2,Items155_2,Items156_2,Items157_2,Items158_2,Items159_2,Items160_2
+	global Items161_1,Items162_1,Items163_1,Items164_1,Items165_1,Items166_1,Items167_1,Items168_1,Items169_1,Items170_1
+	global Items161_2,Items162_2,Items163_2,Items164_2,Items165_2,Items166_2,Items167_2,Items168_2,Items169_2,Items170_2
+	global Items171_1,Items172_1,Items173_1,Items174_1,Items175_1,Items176_1,Items177_1,Items178_1,Items179_1,Items180_1
+	global Items171_2,Items172_2,Items173_2,Items174_2,Items175_2,Items176_2,Items177_2,Items178_2,Items179_2,Items180_2
+	global Items181_1,Items182_1,Items183_1,Items184_1,Items185_1,Items186_1,Items187_1,Items188_1,Items189_1,Items190_1
+	global Items181_2,Items182_2,Items183_2,Items184_2,Items185_2,Items186_2,Items187_2,Items188_2,Items189_2,Items190_2
+	global Items191_1,Items192_1,Items193_1,Items194_1,Items195_1,Items196_1,Items197_1,Items198_1,Items199_1,Items100_1
+	global Items191_2,Items192_2,Items193_2,Items194_2,Items195_2,Items196_2,Items197_2,Items198_2,Items199_2,Items200_2
+	global Items201_1,Items202_1,Items203_1,Items204_1,Items205_1,Items206_1,Items207_1,Items208_1,Items209_1,Items210_1
+	global Items201_2,Items202_2,Items203_2,Items204_2,Items205_2,Items206_2,Items207_2,Items208_2,Items209_2,Items210_2
+	global Items211_1,Items212_1,Items213_1,Items214_1,Items215_1,Items216_1,Items217_1,Items218_1,Items219_1,Items220_1
+	global Items211_2,Items212_2,Items213_2,Items214_2,Items215_2,Items216_2,Items217_2,Items218_2,Items219_2,Items220_2
+	global Items221_1,Items222_1,Items223_1,Items224_1,Items225_1,Items226_1,Items227_1,Items228_1,Items229_1,Items230_1
+	global Items221_2,Items222_2,Items223_2,Items224_2,Items225_2,Items226_2,Items227_2,Items228_2,Items229_2,Items230_2
+	global Items231_1,Items232_1,Items233_1,Items234_1,Items235_1,Items236_1,Items237_1,Items238_1,Items239_1,Items240_1
+	global Items231_2,Items232_2,Items233_2,Items234_2,Items235_2,Items236_2,Items237_2,Items238_2,Items239_2,Items240_2
+	global Items241_1,Items242_1,Items243_1,Items244_1,Items245_1,Items246_1,Items247_1,Items248_1,Items249_1,Items250_1
+	global Items241_2,Items242_2,Items243_2,Items244_2,Items245_2,Items246_2,Items247_2,Items248_2,Items249_2,Items250_2
+	global Items251_1,Items252_1,Items253_1,Items254_1,Items255_1,Items256_1,Items257_1,Items258_1,Items259_1,Items260_1
+	global Items251_2,Items252_2,Items253_2,Items254_2,Items255_2,Items256_2,Items257_2,Items258_2,Items259_2,Items260_2
+	global Items261_1,Items262_1,Items263_1,Items264_1,Items265_1,Items266_1,Items267_1,Items268_1,Items269_1,Items270_1
+	global Items261_2,Items262_2,Items263_2,Items264_2,Items265_2,Items266_2,Items267_2,Items268_2,Items269_2,Items270_2
+	global Items271_1,Items272_1,Items273_1,Items274_1,Items275_1,Items276_1,Items277_1,Items278_1,Items279_1,Items280_1
+	global Items271_2,Items272_2,Items273_2,Items274_2,Items275_2,Items276_2,Items277_2,Items278_2,Items279_2,Items280_2
+	global Items281_1,Items282_1,Items283_1,Items284_1,Items285_1,Items286_1,Items287_1,Items288_1,Items289_1,Items290_1
+	global Items281_2,Items282_2,Items283_2,Items284_2,Items285_2,Items286_2,Items287_2,Items288_2,Items289_2,Items290_2
+	global Items291_1,Items292_1,Items293_1,Items294_1,Items295_1,Items296_1,Items297_1,Items298_1,Items299_1,Items300_1
+	global Items291_2,Items292_2,Items293_2,Items294_2,Items295_2,Items296_2,Items297_2,Items298_2,Items299_2,Items300_2
 	global ItemPlayer
 	
 	Gui,5:Submit
