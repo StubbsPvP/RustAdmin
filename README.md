@@ -30,5 +30,5 @@ Instructions:
 
 Additional Instructions:
 =========
-MAKE SURE "item_list.txt" STAYS WITH "Rust Admin Menu.exe" AT ALL TIMES OR SPAWNING WILL CEASE TO WORK.
-To find steam id search the offenders username on steam and copy their community url and paste at http://steamid.co/ .
+1) MAKE SURE "item_list.txt" STAYS WITH "Rust Admin Menu.exe" AT ALL TIMES OR SPAWNING WILL CEASE TO WORK.
+2) To find steam id search the offenders username on steam and copy their community url and paste at http://steamid.co/ .
