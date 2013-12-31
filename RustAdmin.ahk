@@ -3,7 +3,7 @@ CoordMode,ToolTip,Screen
 CoordMode,Pixel,Screen
 CoordMode,Mouse,Screen
 
-MsgBox,0,Rust Admin Instructions,F2) Open Admin Menu`nF3) Quit the script`nF4) Borderless Windowed(Must be in windowed)`nF5) Disconnect and reconnect ,100
+MsgBox,0,Rust Admin Instructions,F2) Open Admin Menu`nF3) Quit the script`nF4) Borderless Windowed(Must be in windowed),100
 
 AHKFiles = %A_WorkingDir%
 
