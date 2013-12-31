@@ -105,7 +105,7 @@ ShowLogin() {
 	Gui,3: Add, Radio, vLoginChoice Checked, On 
 	Gui,3: Add, Radio, , Off 
 	Gui,3: Add, Button, default xm, OK
-	Gui,3: Show, NoActivate, Choose God Mode
+	Gui,3: Show, NoActivate, Admin Mode Toggle
 }
 
 3ButtonOK:
@@ -339,7 +339,7 @@ ShowGodMode() {
 	Gui,6: Add, Radio, vGodModeChoice Checked, On 
 	Gui,6: Add, Radio, , Off 
 	Gui,6: Add, Button, default xm, OK
-	Gui,6: Show, NoActivate, Choose God Mode
+	Gui,6: Show, NoActivate, God Mode Toggle
 }
 
 6ButtonOK:
@@ -362,7 +362,7 @@ ShowAirdrop() {
 	Gui,7: Add, Text,, Airdrop:
 	Gui,7: Add, Edit, vAirdrop ym,%Airdrop%
 	Gui,7: Add, Button, default xm, OK
-	Gui,7: Show, NoActivate, RustAdmin Custom Notice
+	Gui,7: Show, NoActivate, Airdrop Count
 }
 
 7ButtonOK:
@@ -391,7 +391,7 @@ ShowKick() {
 	Gui,8: Add, Text,, Username:
 	Gui,8: Add, Edit, vKick ym,%Kick%
 	Gui,8: Add, Button, default xm, OK
-	Gui,8: Show, NoActivate, RustAdmin Kick
+	Gui,8: Show, NoActivate, Kick Menu
 }
 
 8ButtonOK:
@@ -411,7 +411,7 @@ ShowBan() {
 	Gui,9: Add, Text,, Username:
 	Gui,9: Add, Edit, vBan ym,%Ban%
 	Gui,9: Add, Button, default xm, OK
-	Gui,9: Show, NoActivate, RustAdmin Ban
+	Gui,9: Show, NoActivate, Ban Menu
 }
 
 9ButtonOK:
@@ -436,7 +436,7 @@ ShowBanid() {
 	Gui,10: Add, Text, X10 Y35, Username:
 	Gui,10: Add, Edit, vUsername X68 Y35,%Username%
 	Gui,10: Add, Button, default xm, OK
-	Gui,10: Show, NoActivate, RustAdmin Ban ID
+	Gui,10: Show, NoActivate, Steam Ban
 }
 
 10ButtonOK:
