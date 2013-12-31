@@ -1,24 +1,17 @@
 RustAdmin
 =========
 
-Rust Server Administration Script
+Rust Server Administration Script Source
 
 Instructions:
 =========
 
-1) Run "Rust Admin Menu.exe"
+1) Install AutoHotkey.
 
-2) You need to run Rust in windowed mode. (Press F4 to enter Borderless Fullscreen)
+2) Open RustAdmin.ahk with Notepad++.
 
-3) You must manually login via console. (Read README.md in Source folder to bypass this"
+3) Edit line 10 - 15 and 114 to your liking.
 
-4) Press F2 to bring up the RustAdmin window
+4) Navigate to your AutoHotkey folder then into Compiler folder.
 
-5) Close the console window before bringing up the RustAdmin window.
-
-6) Press F3 to quit RustAdmin
-
-
-Additional Instructions:
-=========
--I recommend reading the readme in Source folder!
+5) Open Ahk2Exe.exe. Everything you need can be found in Source folder.
