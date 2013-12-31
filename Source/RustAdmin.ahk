@@ -3,15 +3,16 @@ CoordMode,ToolTip,Screen
 CoordMode,Pixel,Screen
 CoordMode,Mouse,Screen
 
-
-MsgBox,0,Rust Admin Instructions,1) You need to play in windowed mode`n2) You need to manually login to admin mode`n3) Close the console window`n4) Press F2 to open admin window`n`n -Press F3 at any time to quit-,100
+MsgBox,0,Rust Admin Instructions,F2) Open Admin Menu`nF3) Quit the script`nF4) Borderless Windowed(Must be in windowed)`nF5) Disconnect and reconnect ,100
 
 AHKFiles = %A_WorkingDir%
 
-TeleportPlayer = [ABSO] BuckeyeMonkey
+TeleportPlayer = proxywars
 TeleportX := 6275.024
 TeleportY := 455.483
 TeleportZ := -3855
+Banid = STEAM_0:1:55804701
+Username = GimmeYourButtSpam
 
 XCenter := A_ScreenWidth/2
 YCenter := A_ScreenHeight/2
@@ -22,41 +23,53 @@ Stop = Yes
 #IfWinActive,PlayRust
 
 F2::
-
-ShowConfig()
-
+	ShowConfig()
 return
-
 
 F3::
-	ToolTip,Exiting,XCenter,YCenter
-	Sleep 1000
-	ExitApp
+    ToolTip,Exiting,XCenter,YCenter
+    Sleep 1000
+    ExitApp
 return
 
+F4::
+	WinSet, Style, -0xC00000 ; hide title bar
+	WinSet, Style, -0x800000 ; hide thin-line border
+	WinSet, Style, -0x400000 ; hide dialog frame
+	WinSet, Style, -0x40000 ; hide thickframe/sizebox
+	WinMove, , , 0, 0, 1920, 1080
+return
 
 ShowConfig() {
-	global ConfigChoice
-	Gui,2: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,2: Add, Text,, Select Setup:
-	Gui,2: Add, Radio, vConfigChoice, Send Notice 
-	Gui,2: Add, Radio, , Send Standard Notice 
-	Gui,2: Add, Radio, , Create Items 
-	Gui,2: Add, Radio, , Teleport 
-	Gui,2: Add, Radio, , God Mode
-	Gui,2: Add, Radio, , Air Drop
-	Gui,2: Add, Button, default xm, OK
-	Gui,2: Show, NoActivate, RustAdmin
+        global ConfigChoice
+        Gui,2: +AlwaysOnTop +ToolWindow +Owner ; +Owner avoids a taskbar button.
+        Gui,2: Add, Text,, Select Setup:
+        Gui,2: Add, Radio, vConfigChoice , Admin Mode
+		Gui,2: Add, Radio, , Player Count
+		Gui,2: Add, Radio, , Spawn Items
+        Gui,2: Add, Radio, , Teleport
+        Gui,2: Add, Radio, , God Mode
+        Gui,2: Add, Radio, , Air Drop
+		Gui,2: Add, Radio, , Kick
+        Gui,2: Add, Radio, , Ban
+		Gui,2: Add, Radio, , Steam Ban
+        Gui,2: Add, Button, default xm, OK
+        Gui,2: Show, NoActivate, RustAdmin
 }
 
 2ButtonOK:
 	Gui,2:Submit
 	Gui,2:Destroy
 	if (ConfigChoice = 1) {
-		ShowSendNotice()
+		ShowLogin()
 	}
 	else if (ConfigChoice = 2) {
-		ShowSendStandardNotice()
+		Send {F1}
+		Sleep 100
+		Send status
+		sleep 100
+		Send {Enter}
+		sleep 100
 	}
 	else if (ConfigChoice = 3) {
 		ShowCreateItems()
@@ -68,8 +81,16 @@ ShowConfig() {
 		ShowGodMode()
 	}
 	else if (ConfigChoice = 6) {
-		GiveCommand = airdrop.drop
-		ExecuteCommand(GiveCommand)
+		showAirdrop()
+	}
+	else if (ConfigChoice = 7) {
+		ShowKick()
+	}
+	else if (ConfigChoice = 8) {
+		ShowBan()
+	}
+	else if (ConfigChoice = 9) {
+		ShowBanid()
 	}
 return
 
@@ -77,67 +98,28 @@ return
 	Gui,2:Destroy
 return
 
-ShowSendNotice() {
-	global CustomNotice
+ShowLogin() {
+	global LoginChoice
 	Gui,3: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,3: Add, Text,, Notice:
-	Gui,3: Add, Edit, vCustomNotice ym,%CustomNotice%
+	Gui,3: Add, Text,, Admin Mode:
+	Gui,3: Add, Radio, vLoginChoice Checked, On 
+	Gui,3: Add, Radio, , Off 
 	Gui,3: Add, Button, default xm, OK
-	Gui,3: Show, NoActivate, RustAdmin Custom Notice
+	Gui,3: Show, NoActivate, Choose God Mode
 }
 
 3ButtonOK:
 	Gui,3:Submit
 	Gui,3:Destroy
-	SendExecute = say %CustomNotice%
-	ExecuteCommand(SendExecute)
+	Login = rcon.login pass123
+	if (LoginChoice == 2) {
+		Login = rcon.logoff
+	}
+	ExecuteCommand(Login)
 return
 
 3GuiClose:
 	Gui,3:Destroy
-return
-
-ShowSendStandardNotice() {
-	global StandardNoticeChoice
-	Gui,4: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,4: Add, Text,, Notice:
-	Loop,%AHKFiles%*_notice.txt {
-		if (A_Index = 1) {
-			Gui,4: Add, Radio, vStandardNoticeChoice, %A_LoopFileName% 
-		}
-		else {
-			Gui,4: Add, Radio, , %A_LoopFileName% 
-		}
-	}
-	Gui,4: Add, Button, default xm, OK
-	Gui,4: Show, NoActivate, RustAdmin Standard Notice
-}
-
-4ButtonOK:
-	Gui,4:Submit
-	Gui,4:Destroy
-	StandardNotice = StandardNoticeChoice
-	Loop,%AHKFiles%\*_notice.txt
-	{
-		if (A_Index = StandardNoticeChoice) {
-			Send {F1}
-			Sleep 100
-			Loop, read, %AHKFiles%\%A_LoopFileName%
-			{
-				;ToolTip,%A_LoopReadLine%
-				Send say %A_LoopReadLine%
-				sleep 100
-				Send {Enter}
-				sleep 100
-			}
-			Send {F1}
-			Sleep 100
-		}
-	}
-return
-
-4GuiClose:
-	Gui,4:Destroy
 return
 
 ShowCreateItems() {
@@ -202,16 +184,15 @@ ShowCreateItems() {
 	global Items291_1,Items292_1,Items293_1,Items294_1,Items295_1,Items296_1,Items297_1,Items298_1,Items299_1,Items300_1
 	global Items291_2,Items292_2,Items293_2,Items294_2,Items295_2,Items296_2,Items297_2,Items298_2,Items299_2,Items300_2
 
-
-
-
 	global ItemPlayer
 	
-	Gui,5: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,5: Add, Text,, Player:
-	Gui,5: Add, Edit, vItemPlayer ym,%ItemPlayer%
+	Gui,4: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,4: Add, Text,, Player:
+	Gui,4: Add, Edit, vItemPlayer ym,%ItemPlayer%
+	Gui,4: Add, Radio, vPlayerChoice Checked, Individual
+	Gui,4: Add, Radio, , All Players 
 	XPOSMOD := 0
-	YPOSMOD := 1
+	YPOSMOD := 2.5
 	Loop, read, %AHKFiles%item_list.txt
 	{
 		StringSplit, param_array, A_LoopReadLine, %A_Tab%
@@ -219,8 +200,8 @@ ShowCreateItems() {
 		YPOSNUM := (YPOSMOD * 25) + 7
 		XPOS := 10 + (XPOSMOD * 225)
 		XPOSNUM := 200 + (XPOSMOD * 225)
-		Gui,5: Add, Checkbox, vItems%A_Index%_1 X%XPOS% Y%YPOS%, %param_array1%
-		Gui,5: Add, Edit, vItems%A_Index%_2 X%XPOSNUM% Y%YPOSNUM%, %param_array2%
+		Gui,4: Add, Checkbox, vItems%A_Index%_1 X%XPOS% Y%YPOS%, %param_array1%
+		Gui,4: Add, Edit, vItems%A_Index%_2 X%XPOSNUM% Y%YPOSNUM%, %param_array2%
 		if (Mod(A_Index,20) = 0) {
 			XPOSMOD := XPOSMOD + 1
 			YPOSMOD := 1
@@ -229,11 +210,11 @@ ShowCreateItems() {
 			YPOSMOD := YPOSMOD + 1
 		}
 	}
-	Gui,5: Add, Button, default xm, OK
-	Gui,5: Show, NoActivate, RustAdmin Create Items
+	Gui,4: Add, Button, default xm, OK
+	Gui,4: Show, NoActivate, RustAdmin Create Items
 }
 
-5ButtonOK:
+4ButtonOK:
 	global Items1_1,Items2_1,Items3_1,Items4_1,Items5_1,Items6_1,Items7_1,Items8_1,Items9_1,Items10_1
 	global Items1_2,Items2_2,Items3_2,Items4_2,Items5_2,Items6_2,Items7_2,Items8_2,Items9_2,Items10_2
 	global Items11_1,Items12_1,Items13_1,Items14_1,Items15_1,Items16_1,Items17_1,Items18_1,Items19_1,Items20_1
@@ -296,8 +277,8 @@ ShowCreateItems() {
 	global Items291_2,Items292_2,Items293_2,Items294_2,Items295_2,Items296_2,Items297_2,Items298_2,Items299_2,Items300_2
 	global ItemPlayer
 	
-	Gui,5:Submit
-	Gui,5:Destroy
+	Gui,4:Submit
+	Gui,4:Destroy
 	
 	Loop, read, %AHKFiles%\item_list.txt
 	{
@@ -305,40 +286,41 @@ ShowCreateItems() {
 		if (Items%A_Index%_1 = 1) {
 			Amount = % Items%A_Index%_2
 			GiveCommand = inv.giveplayer "%ItemPlayer%" "%param_array1%" %Amount%
+			if (PlayerChoice == 2) {
+				GiveCommand = inv.giveall "%param_array1%" %Amount%
+			}
 			ExecuteCommand(GiveCommand)
 		}
 	}
 
 return
 
-5GuiClose:
-	Gui,5:Destroy
+4GuiClose:
+	Gui,4:Destroy
 return
 
 ShowTeleport() {
 	global TeleportChoice,TeleportPlayer,TeleportToPlayer,TeleportX,TeleportY,TeleportZ
-	
-	
-	Gui,6: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,6: Add, Text,, Player:
-	Gui,6: Add, Edit, vTeleportPlayer ym,%TeleportPlayer%
-	Gui,6: Add, Radio, vTeleportChoice, To Player
-	Gui,6: Add, Radio, , To Pos
-	Gui,6: Add, Edit, vTeleportToPlayer X125 Y30,%TeleportToPlayer%
-	Gui,6: Add, Text, X25 Y78, X:
-	Gui,6: Add, Edit, vTeleportX X40 Y75,%TeleportX%
-	Gui,6: Add, Text, X110 Y78, Y:
-	Gui,6: Add, Edit, vTeleportY X125 Y75,%TeleportY%
-	Gui,6: Add, Text, X195 Y78, Z:
-	Gui,6: Add, Edit, vTeleportZ X210 Y75,%TeleportZ%
-	Gui,6: Add, Button, default xm, OK
-	Gui,6: Show, NoActivate, RustAdmin Teleport
+	Gui,5: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,5: Add, Text,, Player:
+	Gui,5: Add, Edit, vTeleportPlayer ym,%TeleportPlayer%
+	Gui,5: Add, Radio, vTeleportChoice, To Player
+	Gui,5: Add, Radio, , To Pos
+	Gui,5: Add, Edit, vTeleportToPlayer X125 Y30,%TeleportToPlayer%
+	Gui,5: Add, Text, X25 Y78, X:
+	Gui,5: Add, Edit, vTeleportX X40 Y75,%TeleportX%
+	Gui,5: Add, Text, X110 Y78, Y:
+	Gui,5: Add, Edit, vTeleportY X125 Y75,%TeleportY%
+	Gui,5: Add, Text, X195 Y78, Z:
+	Gui,5: Add, Edit, vTeleportZ X210 Y75,%TeleportZ%
+	Gui,5: Add, Button, default xm, OK
+	Gui,5: Show, NoActivate, RustAdmin Teleport
 }
 
-6ButtonOK:
+5ButtonOK:
 	global TeleportChoice,TeleportPlayer,TeleportToPlayer,TeleportX,TeleportY,TeleportZ
-	Gui,6:Submit
-	Gui,6:Destroy
+	Gui,5:Submit
+	Gui,5:Destroy
 	TPCommand = teleport.topos "%TeleportPlayer%" "%TeleportX%" "%TeleportY%" "%TeleportZ%"
 	if (TeleportChoice = 1) {
 		TPCommand = teleport.toplayer "%TeleportPlayer%" "%TeleportToPlayer%"
@@ -346,23 +328,23 @@ ShowTeleport() {
 	ExecuteCommand(TPCommand)
 return
 
-6GuiClose:
-	Gui,6:Destroy
+5GuiClose:
+	Gui,5:Destroy
 return
 
 ShowGodMode() {
 	global GodModeChoice
-	Gui,7: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,7: Add, Text,, Turn Godmode:
-	Gui,7: Add, Radio, vGodModeChoice Checked, On 
-	Gui,7: Add, Radio, , Off 
-	Gui,7: Add, Button, default xm, OK
-	Gui,7: Show, NoActivate, Choose God Mode
+	Gui,6: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,6: Add, Text,, Turn Godmode:
+	Gui,6: Add, Radio, vGodModeChoice Checked, On 
+	Gui,6: Add, Radio, , Off 
+	Gui,6: Add, Button, default xm, OK
+	Gui,6: Show, NoActivate, Choose God Mode
 }
 
-7ButtonOK:
-	Gui,7:Submit
-	Gui,7:Destroy
+6ButtonOK:
+	Gui,6:Submit
+	Gui,6:Destroy
 	SendGodeMode = dmg.godmode true
 	if (GodModeChoice == 2) {
 		SendGodeMode = dmg.godmode false
@@ -370,12 +352,107 @@ ShowGodMode() {
 	ExecuteCommand(SendGodeMode)
 return
 
+6GuiClose:
+	Gui,6:Destroy
+return
+
+ShowAirdrop() {
+	global Airdrop
+	Gui,7: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,7: Add, Text,, Airdrop:
+	Gui,7: Add, Edit, vAirdrop ym,%Airdrop%
+	Gui,7: Add, Button, default xm, OK
+	Gui,7: Show, NoActivate, RustAdmin Custom Notice
+}
+
+7ButtonOK:
+	Gui,7:Submit
+	Gui,7:Destroy
+	AirdropCommand = airdrop.drop
+	Airdrop:= Airdrop - 1
+	Loop
+	{
+	ExecuteCommand(AirdropCommand)
+	if a_index > %Airdrop%
+        break  ; Terminate the loop
+    if a_index < %Airdrop%
+        continue ; Skip the below and start a new iteration
+	}
+	
+return
+
 7GuiClose:
 	Gui,7:Destroy
 return
 
-ExecuteCommand(command) {
+ShowKick() {
+	global Kick
+	Gui,8: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,8: Add, Text,, Username:
+	Gui,8: Add, Edit, vKick ym,%Kick%
+	Gui,8: Add, Button, default xm, OK
+	Gui,8: Show, NoActivate, RustAdmin Kick
+}
 
+8ButtonOK:
+	Gui,8:Submit
+	Gui,8:Destroy
+	KickCommand = kick "%Kick%"
+	ExecuteCommand(KickCommand)
+return
+
+8GuiClose:
+	Gui,8:Destroy
+return
+
+ShowBan() {
+	global Ban
+	Gui,9: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,9: Add, Text,, Username:
+	Gui,9: Add, Edit, vBan ym,%Ban%
+	Gui,9: Add, Button, default xm, OK
+	Gui,9: Show, NoActivate, RustAdmin Ban
+}
+
+9ButtonOK:
+	Gui,9:Submit
+	Gui,9:Destroy
+	BanCommand = ban "%Ban%"
+	KickCommand = kick "%Ban%"
+	ExecuteCommand(BanCommand)
+	ExecuteCommand(KickCommand)
+return
+
+9GuiClose:
+	Gui,9:Destroy
+return
+
+ShowBanid() {
+	global Banid
+	global Username
+	Gui,10: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,10: Add, Text,, Steam ID:
+	Gui,10: Add, Edit, vBanid ym,%Banid%
+	Gui,10: Add, Text, X10 Y35, Username:
+	Gui,10: Add, Edit, vUsername X68 Y35,%Username%
+	Gui,10: Add, Button, default xm, OK
+	Gui,10: Show, NoActivate, RustAdmin Ban ID
+}
+
+10ButtonOK:
+	Gui,10:Submit
+	Gui,10:Destroy
+	BanidCommand = banid "%Banid%"
+	KickCommand = kick "%Username%"
+	ExecuteCommand(BanidCommand)
+	ExecuteCommand(KickCommand)
+return
+
+10GuiClose:
+	Gui,10:Destroy
+return
+
+ExecuteCommand(command) {
 	Send {F1}
 	Sleep 100
 	Send %command%
@@ -385,8 +462,3 @@ ExecuteCommand(command) {
 	Send {F1}
 	Sleep 100
 }
-
-
-
-
-
