@@ -1,5 +1,0 @@
-This is an example notice file
-Each line will get sent as a notice to your server
-You can create as many notice files as you want as long as the name ends in "_notice.txt"
-If you have file extentions hidden do not add ".txt" to the end of the name
-Send these notices using "Send Standard Notice"
