@@ -3,9 +3,10 @@ Stone Hatchet	1
 Hatchet	1
 Pick Axe	1
 Hunting Bow	1
-9mm Pistol	1
 HandCannon	1
 Pipe Shotgun	1
+Revolver	1
+9mm Pistol	1
 P250	1
 MP5A4	1
 Bolt Action Rifle	1
@@ -55,7 +56,7 @@ Raw Chicken Breast	5
 Cooked Chicken Breast	5
 Tuna can	5
 Granola Bar	5
-Small Water Bottle(BROKEN)	5
+Small Water Bottle	5
 Small Rations	5
 Chocolate Bar	5
 Can of Beans	5
@@ -107,6 +108,7 @@ Metal Foundation	1
 Metal Pillar	1
 Metal Stairs	1
 Metal Wall	10
+Metal Window	1
 Pick Axe Blueprint	1
 P250 Blueprint	1
 Bolt Action Rifle Blueprint	1
@@ -142,5 +144,6 @@ Metal Foundation BP	1
 Metal Pillar BP	1
 Metal Stairs BP	1
 Metal Wall BP	1
+Metal Window BP	1
 Small Stash Blueprint	1
 Spike Wall Blueprint	1

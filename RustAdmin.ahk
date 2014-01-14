@@ -11,8 +11,10 @@ TeleportPlayer = proxywars
 TeleportX := 6275.024
 TeleportY := 455.483
 TeleportZ := -3855
-Banid = STEAM_0:1:55804701
 Username = GimmeYourButtSpam
+Reason = Hacking and Spamming
+Say = Server will be restarting within a few minutes
+Time = 16
 
 XCenter := A_ScreenWidth/2
 YCenter := A_ScreenHeight/2
@@ -45,11 +47,13 @@ ShowConfig() {
         Gui,2: +AlwaysOnTop +ToolWindow +Owner ; +Owner avoids a taskbar button.
         Gui,2: Add, Text,, Select Setup:
         Gui,2: Add, Radio, vConfigChoice , Admin Mode
-		Gui,2: Add, Radio, , Player Count
+		Gui,2: Add, Radio, , Player List
 		Gui,2: Add, Radio, , Spawn Items
+		Gui,2: Add, Radio, , Say
         Gui,2: Add, Radio, , Teleport
         Gui,2: Add, Radio, , God Mode
         Gui,2: Add, Radio, , Air Drop
+		Gui,2: Add, Radio, , Time
 		Gui,2: Add, Radio, , Kick
         Gui,2: Add, Radio, , Ban
 		Gui,2: Add, Radio, , Steam Ban
@@ -69,27 +73,32 @@ ShowConfig() {
 		Send status
 		sleep 100
 		Send {Enter}
-		sleep 100
 	}
 	else if (ConfigChoice = 3) {
 		ShowCreateItems()
 	}
 	else if (ConfigChoice = 4) {
-		ShowTeleport()
+		ShowSay()
 	}
 	else if (ConfigChoice = 5) {
-		ShowGodMode()
+		ShowTeleport()
 	}
 	else if (ConfigChoice = 6) {
-		showAirdrop()
+		ShowGodMode()
 	}
 	else if (ConfigChoice = 7) {
-		ShowKick()
+		showAirdrop()
 	}
 	else if (ConfigChoice = 8) {
-		ShowBan()
+		showTime()
 	}
 	else if (ConfigChoice = 9) {
+		ShowKick()
+	}
+	else if (ConfigChoice = 10) {
+		ShowBan()
+	}
+	else if (ConfigChoice = 11) {
 		ShowBanid()
 	}
 return
@@ -299,28 +308,48 @@ return
 	Gui,4:Destroy
 return
 
-ShowTeleport() {
-	global TeleportChoice,TeleportPlayer,TeleportToPlayer,TeleportX,TeleportY,TeleportZ
+ShowSay() {
+	global Say
 	Gui,5: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,5: Add, Text,, Player:
-	Gui,5: Add, Edit, vTeleportPlayer ym,%TeleportPlayer%
-	Gui,5: Add, Radio, vTeleportChoice, To Player
-	Gui,5: Add, Radio, , To Pos
-	Gui,5: Add, Edit, vTeleportToPlayer X125 Y30,%TeleportToPlayer%
-	Gui,5: Add, Text, X25 Y78, X:
-	Gui,5: Add, Edit, vTeleportX X40 Y75,%TeleportX%
-	Gui,5: Add, Text, X110 Y78, Y:
-	Gui,5: Add, Edit, vTeleportY X125 Y75,%TeleportY%
-	Gui,5: Add, Text, X195 Y78, Z:
-	Gui,5: Add, Edit, vTeleportZ X210 Y75,%TeleportZ%
+	Gui,5: Add, Text,, Message:
+	Gui,5: Add, Edit, vSay ym,%Say%
 	Gui,5: Add, Button, default xm, OK
-	Gui,5: Show, NoActivate, RustAdmin Teleport
+	Gui,5: Show, NoActivate, Say
 }
 
 5ButtonOK:
-	global TeleportChoice,TeleportPlayer,TeleportToPlayer,TeleportX,TeleportY,TeleportZ
 	Gui,5:Submit
 	Gui,5:Destroy
+	SayCommand = notice.popupall "%Say%"
+	ExecuteCommand(SayCommand)
+return
+
+5GuiClose:
+	Gui,5:Destroy
+return
+
+ShowTeleport() {
+	global TeleportChoice,TeleportPlayer,TeleportToPlayer,TeleportX,TeleportY,TeleportZ
+	Gui,6: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,6: Add, Text,, Player:
+	Gui,6: Add, Edit, vTeleportPlayer ym,%TeleportPlayer%
+	Gui,6: Add, Radio, vTeleportChoice, To Player
+	Gui,6: Add, Radio, , To Pos
+	Gui,6: Add, Edit, vTeleportToPlayer X125 Y30,%TeleportToPlayer%
+	Gui,6: Add, Text, X25 Y78, X:
+	Gui,6: Add, Edit, vTeleportX X40 Y75,%TeleportX%
+	Gui,6: Add, Text, X110 Y78, Y:
+	Gui,6: Add, Edit, vTeleportY X125 Y75,%TeleportY%
+	Gui,6: Add, Text, X195 Y78, Z:
+	Gui,6: Add, Edit, vTeleportZ X210 Y75,%TeleportZ%
+	Gui,6: Add, Button, default xm, OK
+	Gui,6: Show, NoActivate, RustAdmin Teleport
+}
+
+6ButtonOK:
+	global TeleportChoice,TeleportPlayer,TeleportToPlayer,TeleportX,TeleportY,TeleportZ
+	Gui,6:Submit
+	Gui,6:Destroy
 	TPCommand = teleport.topos "%TeleportPlayer%" "%TeleportX%" "%TeleportY%" "%TeleportZ%"
 	if (TeleportChoice = 1) {
 		TPCommand = teleport.toplayer "%TeleportPlayer%" "%TeleportToPlayer%"
@@ -328,23 +357,23 @@ ShowTeleport() {
 	ExecuteCommand(TPCommand)
 return
 
-5GuiClose:
-	Gui,5:Destroy
+6GuiClose:
+	Gui,6:Destroy
 return
 
 ShowGodMode() {
 	global GodModeChoice
-	Gui,6: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,6: Add, Text,, Turn Godmode:
-	Gui,6: Add, Radio, vGodModeChoice Checked, On 
-	Gui,6: Add, Radio, , Off 
-	Gui,6: Add, Button, default xm, OK
-	Gui,6: Show, NoActivate, God Mode Toggle
+	Gui,7: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,7: Add, Text,, Turn Godmode:
+	Gui,7: Add, Radio, vGodModeChoice Checked, On 
+	Gui,7: Add, Radio, , Off 
+	Gui,7: Add, Button, default xm, OK
+	Gui,7: Show, NoActivate, God Mode Toggle
 }
 
-6ButtonOK:
-	Gui,6:Submit
-	Gui,6:Destroy
+7ButtonOK:
+	Gui,7:Submit
+	Gui,7:Destroy
 	SendGodeMode = dmg.godmode true
 	if (GodModeChoice == 2) {
 		SendGodeMode = dmg.godmode false
@@ -352,22 +381,22 @@ ShowGodMode() {
 	ExecuteCommand(SendGodeMode)
 return
 
-6GuiClose:
-	Gui,6:Destroy
+7GuiClose:
+	Gui,7:Destroy
 return
 
 ShowAirdrop() {
 	global Airdrop
-	Gui,7: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,7: Add, Text,, Airdrop:
-	Gui,7: Add, Edit, vAirdrop ym,%Airdrop%
-	Gui,7: Add, Button, default xm, OK
-	Gui,7: Show, NoActivate, Airdrop Count
+	Gui,8: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,8: Add, Text,, Airdrop:
+	Gui,8: Add, Edit, vAirdrop ym,%Airdrop%
+	Gui,8: Add, Button, default xm, OK
+	Gui,8: Show, NoActivate, Airdrop Count
 }
 
-7ButtonOK:
-	Gui,7:Submit
-	Gui,7:Destroy
+8ButtonOK:
+	Gui,8:Submit
+	Gui,8:Destroy
 	AirdropCommand = airdrop.drop
 	Airdrop:= Airdrop - 1
 	Loop
@@ -381,45 +410,23 @@ ShowAirdrop() {
 	
 return
 
-7GuiClose:
-	Gui,7:Destroy
-return
-
-ShowKick() {
-	global Kick
-	Gui,8: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,8: Add, Text,, Username:
-	Gui,8: Add, Edit, vKick ym,%Kick%
-	Gui,8: Add, Button, default xm, OK
-	Gui,8: Show, NoActivate, Kick Menu
-}
-
-8ButtonOK:
-	Gui,8:Submit
-	Gui,8:Destroy
-	KickCommand = kick "%Kick%"
-	ExecuteCommand(KickCommand)
-return
-
 8GuiClose:
 	Gui,8:Destroy
 return
 
-ShowBan() {
-	global Ban
+ShowKick() {
+	global Kick
 	Gui,9: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
 	Gui,9: Add, Text,, Username:
-	Gui,9: Add, Edit, vBan ym,%Ban%
+	Gui,9: Add, Edit, vKick ym,%Kick%
 	Gui,9: Add, Button, default xm, OK
-	Gui,9: Show, NoActivate, Ban Menu
+	Gui,9: Show, NoActivate, Kick Menu
 }
 
 9ButtonOK:
 	Gui,9:Submit
 	Gui,9:Destroy
-	BanCommand = ban "%Ban%"
-	KickCommand = kick "%Ban%"
-	ExecuteCommand(BanCommand)
+	KickCommand = kick "%Kick%"
 	ExecuteCommand(KickCommand)
 return
 
@@ -427,29 +434,74 @@ return
 	Gui,9:Destroy
 return
 
-ShowBanid() {
-	global Banid
-	global Username
+ShowBan() {
+	global Ban
+	global Reason1
 	Gui,10: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
-	Gui,10: Add, Text,, Steam ID:
-	Gui,10: Add, Edit, vBanid ym,%Banid%
-	Gui,10: Add, Text, X10 Y35, Username:
-	Gui,10: Add, Edit, vUsername X68 Y35,%Username%
+	Gui,10: Add, Text,, Username:
+	Gui,10: Add, Edit, vBan ym,%Username%
+	Gui,10: Add, Text, X10 Y35, Reason:
+	Gui,10: Add, Edit, vReason1 X68 Y35,%Reason%
 	Gui,10: Add, Button, default xm, OK
-	Gui,10: Show, NoActivate, Steam Ban
+	Gui,10: Show, NoActivate, Ban
 }
 
 10ButtonOK:
 	Gui,10:Submit
 	Gui,10:Destroy
-	BanidCommand = banid "%Banid%"
-	KickCommand = kick "%Username%"
-	ExecuteCommand(BanidCommand)
+	BanCommand = ban "%Ban%" "%reason%"
+	KickCommand = kick "%Ban%"
+	ExecuteCommand(BanCommand)
 	ExecuteCommand(KickCommand)
 return
 
 10GuiClose:
 	Gui,10:Destroy
+return
+
+ShowBanid() {
+	global Banid
+	global Reason2
+	Gui,11: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,11: Add, Text,, Username:
+	Gui,11: Add, Edit, vBanid ym,%Username%
+	Gui,11: Add, Text, X10 Y35, Reason:
+	Gui,11: Add, Edit, vReason2 X68 Y35,%Reason%
+	Gui,11: Add, Button, default xm, OK
+	Gui,11: Show, NoActivate, Steam Ban
+}
+
+11ButtonOK:
+	Gui,11:Submit
+	Gui,11:Destroy
+	BanidCommand = banid "%Banid%" "%reason%"
+	KickCommand = kick "%Username%"
+	ExecuteCommand(BanidCommand)
+	ExecuteCommand(KickCommand)
+return
+
+11GuiClose:
+	Gui,11:Destroy
+return
+
+ShowTime() {
+	global Time
+	Gui,12: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
+	Gui,12: Add, Text,, Hour:
+	Gui,12: Add, Edit, vTime ym,%Time%
+	Gui,12: Add, Button, default xm, OK
+	Gui,12: Show, NoActivate, Steam Ban
+}
+
+12ButtonOK:
+	Gui,12:Submit
+	Gui,12:Destroy
+	TimeCommand = env.time %Time%
+	ExecuteCommand(TimeCommand)
+return
+
+12GuiClose:
+	Gui,12:Destroy
 return
 
 ExecuteCommand(command) {
