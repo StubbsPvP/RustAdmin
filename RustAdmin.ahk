@@ -339,6 +339,16 @@ ShowTeleport() {
 	Gui,5: Add, Edit, x46 y7 w110 h20 vTeleportPlayer, %TeleportPlayer%
 	Gui,5: Add, Radio, x166 y7 w70 h20 vTeleportChoice, To Player
 	Gui,5: Add, Radio, x246 y7 w60 h20 , To XYZ
+	Gui,5: Add, Radio, x6 y67 w140 h20 +Center, Foot of Everrust
+	Gui,5: Add, Radio, x6 y87 w140 h20 +Center, Rad Town (North)
+	Gui,5: Add, Radio, x6 y107 w140 h20 +Center, Rad Town (South)
+	Gui,5: Add, Radio, x6 y127 w140 h20 +Center, Rad Town (East)
+	Gui,5: Add, Radio, x6 y147 w140 h20 +Center, Rad Town (West)
+	Gui,5: Add, Radio, x166 y67 w140 h20 +Center, Checkpoints
+	Gui,5: Add, Radio, x166 y87 w140 h20 +Center, Sheds
+	Gui,5: Add, Radio, x166 y107 w140 h20 +Center, Hangar
+	Gui,5: Add, Radio, x166 y127 w140 h20 +Center, Bunkers
+	Gui,5: Add, Radio, x166 y147 w140 h20 +Center, Resource Valley
 	Gui,5: Add, Text, x6 y37 w40 h20 , Target:
 	Gui,5: Add, Edit, x46 y37 w110 h20 vTeleportToPlayer, %TeleportToPlayer%
 	Gui,5: Add, Text, x166 y37 w10 h20 , X:
@@ -347,7 +357,8 @@ ShowTeleport() {
 	Gui,5: Add, Edit, x226 y37 w30 h20 vTeleportY, %TeleportY%
 	Gui,5: Add, Text, x266 y37 w10 h20 , Z:
 	Gui,5: Add, Edit, x276 y37 w30 h20 vTeleportZ, %TeleportZ%
-	Gui,5: Add, Button, x316 y7 w50 h50 , OK
+	Gui,5: Add, Text, x6 y220 +center, Map Coords Grabbed from: http://tinyurl.com/RustCoordMap
+	Gui,5: Add, Button, x6 y177 w300 h30 , OK
 	Gui,5: Show, NoActivate, RustAdmin Teleport
 }
 
@@ -360,6 +371,36 @@ ShowTeleport() {
 	}
 	else if (TeleportChoice = 2) {
 		TPCommand = teleport.topos "%TeleportPlayer%" "%TeleportX%" "%TeleportY%" "%TeleportZ%"
+	}
+	else if (TeleportChoice = 3) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "4500" "485" "-4400"
+	}
+	else if (TeleportChoice = 4) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "5250" "370" "-4850"
+	}
+	else if (TeleportChoice = 5) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "6690" "355" "-3880"
+	}
+	else if (TeleportChoice = 6) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "6050" "380" "-3620"
+	}
+	else if (TeleportChoice = 7) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "6300" "360" "-4650"
+	}
+	else if (TeleportChoice = 8) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "5700" "410" "-4280"
+	}
+	else if (TeleportChoice = 9) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "6050" "390" "-4400"
+	}
+	else if (TeleportChoice = 10) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "6600" "355" "-4400"
+	}
+	else if (TeleportChoice = 11) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "6410" "385" "-3880"
+	}
+	else if (TeleportChoice = 12) {
+		TPCommand = teleport.topos "%TeleportPlayer%" "5000" "460" "-3000"
 	}
 	ExecuteCommand(TPCommand)
 return
