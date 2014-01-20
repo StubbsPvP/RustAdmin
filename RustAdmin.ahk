@@ -222,7 +222,7 @@ ShowCreateItems() {
 	Gui,4: +AlwaysOnTop +ToolWindow +Owner  ; +Owner avoids a taskbar button.
 	Gui,4: Add, Text, x6 y7 w40 h20 , Player:
 	Gui,4: Add, Edit, x46 y7 w120 h20 vItemPlayer, %ItemPlayer%
-	Gui,4: Add, Radio, x176 y7 w80 h20 , Individual
+	Gui,4: Add, Radio, x176 y7 w80 h20 vPlayerChoice Checked, Individual
 	Gui,4: Add, Radio, x266 y7 w80 h20 , All Players
 	XPOSMOD := 0
 	YPOSMOD := 1.5
