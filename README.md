@@ -43,4 +43,4 @@ Proxywars
 
 Krevan88
 
-For thier work on updating and improving this script!!
+For their work on updating and improving this script!!
