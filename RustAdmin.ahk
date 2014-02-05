@@ -3,7 +3,8 @@ CoordMode,ToolTip,Screen
 CoordMode,Pixel,Screen
 CoordMode,Mouse,Screen
 
-MsgBox,,Rust Admin Script,Follow the instructions below to run the program. Enjoy.`n`n1.) Open RUST in Windowed Mode.`n2.) Connect to your server.`n3.) Press F2 to open the Admin Script Menu`n4.) Click Login and Input Server Password`n5.) Enjoy. :)`n`n`n-- Press F12 to close the script at any time. --`n`n`nF2 - Admin Menu`nF3 - Quit Script`nF4 - Borderless Windowed (Must be in windowed mode),100
+MsgBox,,Rust Admin Script v1.5,Follow the instructions below to run the program. Enjoy.`n`n1.) Connect to your server.`n2.) Press F2 to open the Admin Script Menu`n3.) Click Login and Input Server Password`n4.) Enjoy :)`n`nShortcut Keys`n----------`nF2 - Admin Menu`nF3 - Quit Script`nF4 - Borderless Windowed (Must be in windowed mode) TEMP FIX`n`nClick OK to launch Rust.`n`n`n`n`n`n`nPro Tip for Fullscreen Windowed mode
+:`nSteam Library > Rust Properties > Launch Options > -popupwindow
 
 AHKFiles = %A_WorkingDir%
 
@@ -15,13 +16,27 @@ Banid = STEAM_0:1:12345678
 Username = Hacker Name
 Reason = Hacking and Spamming
 Say = Server will be restarting within a few minutes
-Time = 16
+Time = 12
 
 XCenter := A_ScreenWidth/2
 YCenter := A_ScreenHeight/2
 
 Delay = 5000
 Stop = Yes
+
+IfWinNotExist, PlayRust
+{
+    ; Launch Rust game via Steam AppID
+    Run steam://run/252490
+    WinWaitActive, PlayRust Configuration, , 10
+}
+
+if WinExist("PlayRust Configuration") or WinExist(ahk_class #32770)
+{
+    WinActivate
+    WinWaitActive, PlayRust Configuration, , 5
+    Send {Enter}
+}
 
 #IfWinActive, PlayRust
 
@@ -235,7 +250,7 @@ ShowCreateItems() {
 		XPOSNUM := 175 + (XPOSMOD * 200)
 		Gui,4: Add, Checkbox, vItems%A_Index%_1 X%XPOS% Y%YPOS%, %param_array1%
 		Gui,4: Add, Edit, w27 h20 vItems%A_Index%_2 X%XPOSNUM% Y%YPOSNUM%, %param_array2%
-		if (Mod(A_Index,31) = 0) {
+		if (Mod(A_Index,35) = 0) {
 			XPOSMOD := XPOSMOD + 1
 			YPOSMOD := 1.5
 		}
@@ -338,8 +353,8 @@ ShowTeleport() {
 	Gui,5: Add, Text, x6 y7 w40 h20 , Player:
 	Gui,5: Add, Edit, x46 y7 w110 h20 vTeleportPlayer, %TeleportPlayer%
 	Gui,5: Add, Radio, x166 y7 w70 h20 vTeleportChoice, To Player
-	Gui,5: Add, Radio, x246 y7 w60 h20 , To XYZ
-	Gui,5: Add, Radio, x6 y67 w140 h20 +Center, Foot of Everrust
+	Gui,5: Add, Radio, x246 y7 w60 h20 Checked, To XYZ
+	Gui,5: Add, Radio, x6 y67 w140 h20 +Center, Mount Everrust
 	Gui,5: Add, Radio, x6 y87 w140 h20 +Center, Rad Town (North)
 	Gui,5: Add, Radio, x6 y107 w140 h20 +Center, Rad Town (South)
 	Gui,5: Add, Radio, x6 y127 w140 h20 +Center, Rad Town (East)
@@ -373,7 +388,7 @@ ShowTeleport() {
 		TPCommand = teleport.topos "%TeleportPlayer%" "%TeleportX%" "%TeleportY%" "%TeleportZ%"
 	}
 	else if (TeleportChoice = 3) {
-		TPCommand = teleport.topos "%TeleportPlayer%" "4500" "485" "-4400"
+		TPCommand = teleport.topos "%TeleportPlayer%" "2975" "1232" "-3775"
 	}
 	else if (TeleportChoice = 4) {
 		TPCommand = teleport.topos "%TeleportPlayer%" "5250" "370" "-4850"
